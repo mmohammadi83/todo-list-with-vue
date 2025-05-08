@@ -1,0 +1,185 @@
+$office-green: #007200ff
+$office-green-2: #008000ff
+$kelly-green: #38b000ff
+$sgbus-green: #70e000ff
+$spring-bud: #9ef01aff
+$lime: #ccff33ff
+
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Italianno&display=swap')
+
+*
+    margin: 0px
+    padding: 0px
+    box-sizing: border-box
+    background-color: $spring-bud
+    font-family: "Hi Melody", sans-serif
+.nav
+    width: 100%
+    height: 100px
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+#logo
+    height: 100px
+    width: 100px
+
+.todo_text
+    width: 100%
+    height: 350px
+
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-around
+    p
+        font-family: "Italianno", cursive
+        font-size: 98px
+    h1
+        font-size: 130px
+    #create
+        font-size: 80px
+        width: 200px
+        
+
+.login_form
+    width: 100%
+    height: 400px
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    form
+        width: 100%
+        position: absolute
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: start
+        p
+            font-size: 20px
+        input
+            width: 80%
+            height: 67px
+            padding: 10px
+            margin: 15px
+            border: 1px solid $office-green
+            border-radius: 20px
+            font-size: 30px
+
+#login_button
+    width: 100% 
+    display: flex
+    align-items: center
+    justify-content: center
+    input
+        width: 150px
+        background-color: $sgbus-green
+
+.search_box
+    margin-top: 20px
+    margin-bottom: 20px
+
+    width: 100%
+    height: 50px
+    display: flex
+    align-items: center
+    justify-content: center
+    
+    input
+        height: 48px
+        width: 60%
+        border: 1px solid $office-green
+        border-radius: 20px
+        margin-right: 10px
+        background-color: $lime
+        padding: 10px
+        font-size: 25px
+    button
+        background-color: $lime
+        height: 48px
+        width: 48px
+        border: 1px solid $office-green
+        border-radius: 20px
+        display: flex
+        align-items: center
+        justify-content: center
+        svg
+            background-color: $lime
+
+.body
+    width: 100%
+    height: 740px
+    display: flex
+    align-items: center
+    justify-content: center
+.notes_menu
+    padding: 5px
+    width: 98%
+    height: 99%
+    background: $office-green
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: start
+    border-radius: 10px
+    .note
+        
+        border-radius: 10px
+        width: 98%
+        height: 140px
+        background: $kelly-green
+        color: white
+        margin-bottom: 10px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding: 10px
+        .text
+            width: 100%
+            height: 100%
+            border: 1px solid $lime
+            border-radius: 5px
+            white-space: nowrap
+            overflow: hidden      
+            line-height: 1
+            padding: 5px
+            background: none
+            display: flex
+            font-size: 30px
+            align-items: center
+            justify-content: start
+        .button_box
+            background: none
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: center
+            .butt
+                display: flex
+                align-items: center
+                justify-content: center
+                width: 50PX
+                height: 50px
+                border-radius: 10px
+                margin: 5px
+                border: none
+            .edit
+                background: rgba(123, 246, 75, 0.61)
+                svg
+                    background: none
+            .delete
+                background: rgba(254, 0, 4, 0.2)
+                svg
+                    background: none
+
+.butt
+  transition: 0.2s all ease
+
+.butt:active
+  scale: 110%
+
+
+
+    
