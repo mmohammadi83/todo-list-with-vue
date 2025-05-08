@@ -1,12 +1,27 @@
 <script setup>
-import { ref } from "vue";
-import navbar from "./navbar.vue";
-let notes = ref([
-  "In veniam nostrud est velit anim irure do aute ullamco nostrud. Nostrud sunt mollit aute officia consequat et laborum proident. In minim id dolor nulla culpa occaecat anim id ex mollit id. Voluptate tempor nostrud aute laborum culpa ea amet sunt exercitation nostrud. Et commodo sint irure occaecat occaecat nisi et pariatur. Pariatur veniam enim qui id tempor labore aute consequat minim dolore amet deserunt.",
-]);
+  import { ref } from "vue";
+  import navbar from "./navbar.vue";
+  import editmode from "./editmode.vue";
+
+  class note{
+    constructor(title , text){
+      this.title = title
+      this.text = text
+    }
+  }
+
+  let notes = ref([{
+    id: 1,
+    title: 'test',
+    text: "In veniam nostrud est velit anim irure do aute ullamco nostrud. Nostrud sunt mollit aute officia consequat et laborum proident. In minim id dolor nulla culpa occaecat anim id ex mollit id. Voluptate tempor nostrud aute laborum culpa ea amet sunt exercitation nostrud. Et commodo sint irure occaecat occaecat nisi et pariatur. Pariatur veniam enim qui id tempor labore aute consequat minim dolore amet deserunt.",
+  }]);
+
+  let iseditmode = ref(false);
 </script>
+
 <template>
   <navbar />
+  <editmode v-if="iseditmode"/>
   <div class="search_box">
     <input type="text" placeholder="shearch" />
     <button>
@@ -29,9 +44,12 @@ let notes = ref([
   </div>
   <div class="body">
     <div class="notes_menu">
-      <div v-for="note of notes" class="note">
+      <div v-for="note in notes" class="note">
         <div class="text">
-          {{ note }}
+          title: {{ note.title }}
+          <br/>
+          <br/>
+          note: {{ note.text }}
         </div>
         <div class="button_box">
           <button class="butt edit">
@@ -68,4 +86,5 @@ let notes = ref([
       </div>
     </div>
   </div>
+  
 </template>

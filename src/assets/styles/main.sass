@@ -129,8 +129,8 @@ $lime: #ccff33ff
         border-radius: 10px
         width: 98%
         height: 140px
-        background: $kelly-green
-        color: white
+        background: #06b1067b
+        color: $lime
         margin-bottom: 10px
         display: flex
         align-items: center
@@ -181,5 +181,40 @@ $lime: #ccff33ff
   scale: 110%
 
 
-
-    
+.matte
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    top: 0
+    width: 100%
+    height: 100%
+    background-color: #00000079
+    backdrop-filter: blur(12px)
+    .text_box
+        width: 80%
+        height: 80%
+        background: none
+        textarea
+            width: 100%
+            height: 86%
+            background: #014101
+            border: 1px solid $lime 
+            border-radius: 20px
+            font-size: 26px
+            color: $lime
+            padding: 10px
+        .buttons
+            height: 14%
+            display: flex
+            align-items: center
+            justify-content: space-between
+            background: none
+            button
+                width: 40%
+                height: 60px
+                border: 1px solid $office-green
+                border-radius: 20px
+                background: $office-green-2
+                font-size: 30px
+                color: $lime
