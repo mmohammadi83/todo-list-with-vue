@@ -34,6 +34,7 @@ function cancelfunc(){
   reverse();
 }
 
+
 </script>
 <template>
   <Transition>

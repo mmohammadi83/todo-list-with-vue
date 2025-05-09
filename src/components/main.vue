@@ -36,10 +36,13 @@
     iseditmode.value = !iseditmode.value
   }
 
+  function update_shownotes(){
+    shownotes.value = [...notes.value]; 
+  }
   let searchtext = ref('');
   function searchfunc(){
   if(searchtext.value === ''){
-    shownotes.value = [...notes.value]; 
+    update_shownotes();
   }
   else{
     shownotes.value = notes.value.filter(note => 
@@ -48,7 +51,18 @@
     );
   }
 }
+let edit_title = ref('');
+let edit_text = ref('');
+function editfunc(note){
+  edit_text.value = note.text;
+  edit_title.value = note.title;
+  
+}
 
+function deletefunc(id){
+  notes.value = notes.value.filter(note => (note.id != id));
+  update_shownotes();   
+}
 </script>
 
 <template>
@@ -56,6 +70,7 @@
   <editmode @data="(n)=>{
     let node = new note(n.title , n.text , ids++);  
     notes.push(node);
+    update_shownotes();
   }"/>
   <div class="search_box">
     <input v-model="searchtext" type="text" placeholder="search" />
@@ -79,6 +94,7 @@
   </div>
   <div class="body">
     <div class="notes_menu">
+      
       <div v-for="note in shownotes" class="note">
         <div class="text">
           title: {{ note.title }}
@@ -89,7 +105,7 @@
           id: {{note.id}}
         </div>
         <div class="button_box">
-          <button @click="reverse()" class="butt edit">
+          <button @click="editfunc(note)" class="butt edit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="40"
@@ -106,7 +122,7 @@
               />
             </svg>
           </button>
-          <button class="butt delete">
+          <button @click="deletefunc(note.id)" class="butt delete">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="40"
@@ -125,3 +141,4 @@
   </div>
   
 </template>
+
