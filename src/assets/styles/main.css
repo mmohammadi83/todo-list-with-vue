@@ -159,6 +159,7 @@
   font-size: 30px;
   align-items: center;
   justify-content: start;
+  margin-right: 5px;
 }
 .notes_menu .note .button_box {
   background: none;
@@ -191,7 +192,7 @@
 }
 
 .butt {
-  transition: 0.2s all ease;
+  transition: 0.1s all ease;
 }
 
 .butt:active {
@@ -208,11 +209,23 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4745098039);
   backdrop-filter: blur(12px);
+  z-index: 2;
+  transition: 0.1s all ease-in;
 }
 .matte .text_box {
   width: 80%;
   height: 80%;
   background: none;
+}
+.matte .text_box input {
+  width: 100%;
+  height: 50px;
+  background: #014101;
+  border: 1px solid #ccff33;
+  border-radius: 20px;
+  font-size: 26px;
+  color: #ccff33;
+  padding: 10px;
 }
 .matte .text_box textarea {
   width: 100%;
@@ -232,6 +245,7 @@
   background: none;
 }
 .matte .text_box .buttons button {
+  transition: 0.1s all ease;
   width: 40%;
   height: 60px;
   border: 1px solid #007200;
@@ -239,6 +253,25 @@
   background: green;
   font-size: 30px;
   color: #ccff33;
+}
+.matte .text_box .buttons button:active {
+  scale: 105%;
+}
+
+.addnote {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  transition: 0.1s all ease;
+}
+.addnote svg {
+  border-radius: 50%;
+}
+
+.addnote:active {
+  scale: 105%;
 }
 
 /*# sourceMappingURL=main.css.map */

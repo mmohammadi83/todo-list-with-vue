@@ -2,29 +2,64 @@
   import { ref } from "vue";
   import navbar from "./navbar.vue";
   import editmode from "./editmode.vue";
-
+  
   class note{
-    constructor(title , text){
+    constructor(title , text , id){
+      this.id = id
       this.title = title
       this.text = text
     }
   }
-
-  let notes = ref([{
-    id: 1,
+  
+  let ids = 1;
+  let notes = ref([
+    {
+    id: ids++,
     title: 'test',
     text: "In veniam nostrud est velit anim irure do aute ullamco nostrud. Nostrud sunt mollit aute officia consequat et laborum proident. In minim id dolor nulla culpa occaecat anim id ex mollit id. Voluptate tempor nostrud aute laborum culpa ea amet sunt exercitation nostrud. Et commodo sint irure occaecat occaecat nisi et pariatur. Pariatur veniam enim qui id tempor labore aute consequat minim dolore amet deserunt.",
-  }]);
+    },
+    {
+    id: ids++,
+    title: 'ali',
+    text: "In veniam nostrud est velit anim irure do aute ullamco nostrud. Nostrud sunt mollit aute officia consequat et laborum proident. In minim id dolor nulla culpa occaecat anim id ex mollit id. Voluptate tempor nostrud aute laborum culpa ea amet sunt exercitation nostrud. Et commodo sint irure occaecat occaecat nisi et pariatur. Pariatur veniam enim qui id tempor labore aute consequat minim dolore amet deserunt.",
+    },
+    {
+    id: ids++,
+    title: 'mammad',
+    text: "In veniam nostrud est velit anim irure do aute ullamco nostrud. Nostrud sunt mollit aute officia consequat et laborum proident. In minim id dolor nulla culpa occaecat anim id ex mollit id. Voluptate tempor nostrud aute laborum culpa ea amet sunt exercitation nostrud. Et commodo sint irure occaecat occaecat nisi et pariatur. Pariatur veniam enim qui id tempor labore aute consequat minim dolore amet deserunt.",
+    }
+  ]);
+  let shownotes = ref([...notes.value]);
 
   let iseditmode = ref(false);
+  function reverse(){
+    iseditmode.value = !iseditmode.value
+  }
+
+  let searchtext = ref('');
+  function searchfunc(){
+  if(searchtext.value === ''){
+    shownotes.value = [...notes.value]; 
+  }
+  else{
+    shownotes.value = notes.value.filter(note => 
+      note.title.toLowerCase() == searchtext.value.toLowerCase()
+    
+    );
+  }
+}
+
 </script>
 
 <template>
   <navbar />
-  <editmode v-if="iseditmode"/>
+  <editmode @data="(n)=>{
+    let node = new note(n.title , n.text , ids++);  
+    notes.push(node);
+  }"/>
   <div class="search_box">
-    <input type="text" placeholder="shearch" />
-    <button>
+    <input v-model="searchtext" type="text" placeholder="search" />
+    <button @click="searchfunc()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="35"
@@ -44,15 +79,17 @@
   </div>
   <div class="body">
     <div class="notes_menu">
-      <div v-for="note in notes" class="note">
+      <div v-for="note in shownotes" class="note">
         <div class="text">
           title: {{ note.title }}
           <br/>
           <br/>
           note: {{ note.text }}
+          <br>
+          id: {{note.id}}
         </div>
         <div class="button_box">
-          <button class="butt edit">
+          <button @click="reverse()" class="butt edit">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="40"
